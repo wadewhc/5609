@@ -1,0 +1,25 @@
+/* Filename: App.css */
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.homepage,
+.trend-analysis,
+.maps,
+.simulation {
+	display: flex;
+	margin-left: 260px;
+	font-size: 2rem;
+}
+
+.homepage {
+	display: flex;      /* Enables flexbox layout */
+	flex-direction: column; /* Stacks children vertically */
+	align-items: center; /* Centers children horizontally in the container */
+	justify-content: center; /* Centers children vertically in the container */
+	height: 100vh; /* Sets the container height to fill the viewport */
+	text-align: center; /* Centers the text inside the children */
+}
