@@ -10,16 +10,18 @@
 .trend-analysis,
 .maps,
 .simulation {
+	background-color: #ffffff;
 	display: flex;
 	margin-left: 260px;
 	font-size: 2rem;
+	flex-direction: column;
+	margin-bottom: 20px;
 }
-
-.homepage {
-	display: flex;      /* Enables flexbox layout */
-	flex-direction: column; /* Stacks children vertically */
-	align-items: center; /* Centers children horizontally in the container */
-	justify-content: center; /* Centers children vertically in the container */
-	height: 100vh; /* Sets the container height to fill the viewport */
-	text-align: center; /* Centers the text inside the children */
+  
+.homepage p{
+	border: 2px solid rgb(219, 219, 219); 
+	margin-top: 10px;
+	border-radius: 10px; 
+	padding: 20px; 
+	font-size: 25px; 
 }

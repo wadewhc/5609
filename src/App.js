@@ -22,7 +22,7 @@ function App() {
 			<Sidebar />
 			<Routes>
         		<Route
-					path="/homepage"
+					path="/"
 					element={<Homepage />}
 				/>
 				<Route

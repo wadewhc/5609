@@ -57,15 +57,17 @@ const Sidebar = () => {
 							onClick={showSidebar}
 						/>
 					</NavIcon>
-					<h1
-						style={{
-							textAlign: "center",
-							marginLeft: "200px",
-							color: "gray",
-						}}
-					>
-						Homicide Data Explorer
-					</h1>
+					<Link to="/"> 
+						<h1
+							style={{
+								textAlign: "center",
+								marginLeft: "200px",
+								color: "gray",
+							}}
+						>
+							Homicide Data Explorer
+						</h1>
+					</Link>
 				</Nav>
 				<SidebarNav sidebar={sidebar}>
 					<SidebarWrap>

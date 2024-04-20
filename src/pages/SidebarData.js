@@ -1,17 +1,11 @@
 import React from "react";
 // import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
 import { FaUsers } from "react-icons/fa";
 import { FaArrowTrendUp, FaChartBar, FaMapLocationDot } from "react-icons/fa6";
 
 export const SidebarData = [
-	{
-		title: "Homepage",
-		path: "/Homepage",
-		icon: <AiIcons.AiFillHome />,
-	},
 	{
 		title: "Trend Analysis",
 		// path: "/trend-analysis",
