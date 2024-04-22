@@ -7,7 +7,6 @@
 }
 
 .homepage,
-.trend-analysis,
 .maps,
 .simulation {
 	background-color: #ffffff;
@@ -24,4 +23,38 @@
 	border-radius: 10px; 
 	padding: 20px; 
 	font-size: 25px; 
+}
+
+.raw_data_table {
+	background-color: #ffffff;
+	display: flex;
+	margin-left: 220px;
+	font-size: 2rem;
+	flex-direction: column;
+	margin-bottom: 20px;
+}
+
+.chartTitle {
+	display: flex;
+	height: 60px;
+	background-color: lightgray;
+	/* margin-left: 250px; */
+}
+
+.chartDropdown {
+	margin-left: 250px;
+	padding-left: 200px;
+	align-items: center;
+}
+
+.chartDropdown1 {
+	margin-left: 250px;
+	padding-left: 5px;
+	align-items: center;
+}
+
+.barChart {
+	/* margin-top: 20px; */
+	display: flex;
+	margin-left: 100px;
 }

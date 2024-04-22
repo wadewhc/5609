@@ -3,7 +3,7 @@ import React from "react";
 import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
 import { FaUsers } from "react-icons/fa";
-import { FaArrowTrendUp, FaChartBar, FaMapLocationDot } from "react-icons/fa6";
+import { FaArrowTrendUp, FaChartBar, FaChartLine, FaMapLocationDot } from "react-icons/fa6";
 
 export const SidebarData = [
 	{
@@ -16,13 +16,18 @@ export const SidebarData = [
 		subNav: [
 			{
 				title: "Raw Data",
-				path: "/trend-analysis/raw-data",
+				path: "/trend-analysis/raw-data-home",
 				icon: <IoIcons.IoIosPaper />,
 			},
 			{
-				title: "Chart",
-				path: "/trend-analysis/chart",
+				title: "Bar Chart",
+				path: "/trend-analysis/bar-chart",
 				icon: <FaChartBar />,
+			},
+			{
+				title: "Line Chart",
+				path: "/trend-analysis/line-chart",
+				icon: <FaChartLine />,
 			},
 		],
 	},
