@@ -62,11 +62,11 @@
 }
 
 .chartDropdown1 {
-	margin-left: 100px;
 	align-items: center;
 }
 
 .barChart {
+	/* margin-top: 20px; */
 	display: flex;
-	width: 120%;
+	margin-left: 100px;
 }

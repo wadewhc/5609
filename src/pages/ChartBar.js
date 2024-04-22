@@ -73,14 +73,14 @@ function ChartBar() {
       </div>
      
       <div className="barChart">
-          <BarChart
-            dataset={chartData}
-            yAxis={[{ scaleType: 'band', dataKey: 'category' }]}
-            series={[{ dataKey: 'count', label: `Weapon Category in ${selectedYear}`, valueFormatter }]}
-            layout="horizontal"
-            grid={{ vertical: true }}
-            {...chartSetting}
-          />
+        <BarChart
+          dataset={chartData}
+          yAxis={[{ scaleType: 'band', dataKey: 'category' }]}
+          series={[{ dataKey: 'count', label: `Weapon Category in ${selectedYear}`, valueFormatter }]}
+          layout="horizontal"
+          grid={{ vertical: true }}
+          {...chartSetting}
+        />
 
         {isCompareChecked && (
           <BarChart
