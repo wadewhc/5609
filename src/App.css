@@ -17,12 +17,22 @@
 	margin-bottom: 20px;
 }
   
-.homepage p{
+.homepage p,
+.rawdata p{
 	border: 2px solid rgb(219, 219, 219); 
 	margin-top: 10px;
 	border-radius: 10px; 
 	padding: 20px; 
 	font-size: 25px; 
+}
+
+.rawdata{
+	background-color: #ffffff;
+	display: flex;
+	margin-left: 260px;
+	font-size: 2rem;
+	flex-direction: column;
+	margin-bottom: 20px;
 }
 
 .raw_data_table {
@@ -32,6 +42,10 @@
 	font-size: 2rem;
 	flex-direction: column;
 	margin-bottom: 20px;
+}
+
+.select-dropdown {
+	margin-left: 150px;
 }
 
 .chartTitle {
@@ -48,13 +62,11 @@
 }
 
 .chartDropdown1 {
-	margin-left: 250px;
-	padding-left: 5px;
+	margin-left: 100px;
 	align-items: center;
 }
 
 .barChart {
-	/* margin-top: 20px; */
 	display: flex;
-	margin-left: 100px;
+	width: 120%;
 }

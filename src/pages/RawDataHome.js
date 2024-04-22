@@ -11,7 +11,12 @@ const RawDataHome = () => {
     };
       
 	return (
-		<Dropdown style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }} onSelect={handleSelect}>
+        <div className="rawdata">
+			<h1>Raw Data</h1>
+            <p>
+                The raw data page allows users to select any year between 2012 and 2022 to view detailed statistics on various weapons used in homicide incidents.
+			</p>
+		<Dropdown style={{ display: 'flex', justifyContent: 'center'}} onSelect={handleSelect}>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
                 Select a year
             </Dropdown.Toggle>
@@ -30,6 +35,7 @@ const RawDataHome = () => {
                 <Dropdown.Item eventKey="/trend-analysis/raw-data-table-2022">2022</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
+        </div>
 	);
 };
 

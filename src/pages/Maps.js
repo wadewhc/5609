@@ -5,7 +5,7 @@ import "../styles.css";
 const Maps = () => {
 	return (
 		<div className="maps">
-			{/* <h1>Map</h1> */}
+			<h1>Map</h1>
 			<MapChart />
 		</div>
 	);

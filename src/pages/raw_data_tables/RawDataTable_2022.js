@@ -59,11 +59,11 @@ function RawDataTable2022() {
   const totalCount = allRows.reduce((sum, row) => sum + row.count, 0);
 
   return (
-    <TableContainer  sx={{ width: "50vw" }} className="raw_data_table" component={Paper}>
+    <TableContainer  sx={{ width: "83.6vw" }} className="raw_data_table" component={Paper}>
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell sx={{ backgroundColor: "black", color: "white" }}>Weapon Category</TableCell>
+            <TableCell sx={{ backgroundColor: "black", color: "white" }}>Weapon Category 2022</TableCell>
             <TableCell sx={{ backgroundColor: "black", color: "white" }}>Count</TableCell>
             <TableCell sx={{ backgroundColor: "black", color: "white" }}>Percentage</TableCell>
           </TableRow>

@@ -38,7 +38,7 @@ function ChartBar() {
     <div>
       <div className="chartTitle">
         <Dropdown className="chartDropdown" style={{ display: 'flex', alignItems: 'center'}} onSelect={handleSelect}>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
+          <Dropdown.Toggle variant="success" id="dropdown-basic" className="select-dropdown">
               Select a year
           </Dropdown.Toggle>
 
@@ -54,7 +54,7 @@ function ChartBar() {
           label="Compare"
           checked={isCompareChecked}
           onChange={handleCheckboxChange}
-          style={{ marginLeft: '350px', paddingTop: '15px' }}
+          style={{ marginLeft: '100px', paddingTop: '15px' }}
         />
 
         {isCompareChecked && (
@@ -73,14 +73,14 @@ function ChartBar() {
       </div>
      
       <div className="barChart">
-        <BarChart
-          dataset={chartData}
-          yAxis={[{ scaleType: 'band', dataKey: 'category' }]}
-          series={[{ dataKey: 'count', label: `Weapon Category in ${selectedYear}`, valueFormatter }]}
-          layout="horizontal"
-          grid={{ vertical: true }}
-          {...chartSetting}
-        />
+          <BarChart
+            dataset={chartData}
+            yAxis={[{ scaleType: 'band', dataKey: 'category' }]}
+            series={[{ dataKey: 'count', label: `Weapon Category in ${selectedYear}`, valueFormatter }]}
+            layout="horizontal"
+            grid={{ vertical: true }}
+            {...chartSetting}
+          />
 
         {isCompareChecked && (
           <BarChart
