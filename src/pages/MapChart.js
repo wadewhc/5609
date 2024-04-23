@@ -1,78 +1,46 @@
-import React, { useState, useEffect } from "react";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-import { scaleQuantile } from "d3-scale";
-import { csv } from "d3-fetch";
+import React from "react";
+import USAMap from "react-usa-map";
+import MapData from "./MapData";
 
-const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
+// import "./styles.css";
 
-const MapChart = () => {
-  const [data, setData] = useState([]);
-  const [selectedPlace, setSelectedPlace] = useState(null);
+// const red = "#CC0000";
 
-  useEffect(() => {
-    // Load the data from CSV
-    csv("/data.csv").then(counties => {
-      setData(counties);
-    });
-  }, []);
+const USState = [
+  "AZ","NY","CT","MD","WA","OR","NV","NM","DC","DE","MA","MN","WI","IL","VT","RI","NJ","CO","CA","PA","VA","GA","ME","NH","HI","ID","MT",
+  "IN","TE","AK","KY","NC","WV","WY","ND","SD","NE","UT","TN","KS","OK","TX","IO","MO","AR","AL","MS","LA","MI","LA","FL","SC","OH","IA",
+];
 
-  // Define color scale for unemployment rate
-  const colorScale = scaleQuantile()
-    .domain(data.map(d => d.unemployment_rate))
-    .range([
-      "#ffedea",
-      "#ffcec5",
-      "#ffad9f",
-      "#ff8a75",
-      "#ff5533",
-      "#e2492d",
-      "#be3d26",
-      "#9a311f",
-      "#782618"
-    ]);
 
-  // Function to handle click on geography
-  const handleGeographyClick = (geo) => {
-    const cur = data.find(s => s.id === geo.id);
-    setSelectedPlace(cur);
+function makeStatsConfig() {
+  const config = {};
+
+  USState.forEach((state) => {
+    config[state] = {};
+    config[state].fill = "black";
+  });
+
+  return config;
+}
+
+export default function App() {
+  const statesCustomConfig = makeStatsConfig();
+
+  console.log("data come her", statesCustomConfig);
+
+  const mapHandler = (event) => {
+    for(let usState in MapData){
+      if (event.target.dataset.name === usState){
+        alert(JSON.stringify(usState) + "\n" + JSON.stringify(MapData[usState], null, 2));
+      }
+    }
+    
   };
 
   return (
-    <div style={{ position: "relative" }}>
-      <ComposableMap projection="geoAlbersUsa">
-        <Geographies geography={geoUrl}>
-          {({ geographies }) =>
-            geographies.map(geo => (
-              <Geography
-                key={geo.rsmKey}
-                geography={geo}
-                fill={colorScale(data.find(s => s.id === geo.id)?.unemployment_rate)}
-                onClick={() => handleGeographyClick(geo)}
-                style={{ cursor: "pointer" }}
-              />
-            ))
-          }
-        </Geographies>
-      </ComposableMap>
-      {selectedPlace && (
-        <div
-          style={{
-            position: "absolute",
-            top: "10px",
-            right: "10px",
-            backgroundColor: "white",
-            border: "1px solid black",
-            padding: "5px",
-            borderRadius: "5px",
-            zIndex: 9999,
-          }}
-        >
-          <h4>{selectedPlace.name}</h4>
-          <p>Unemployment Rate: {selectedPlace.unemployment_rate}%</p>
-        </div>
-      )}
+    <div className="mapTitle">
+      <h1>Crime Data for the Nation</h1>
+      <USAMap customize={statesCustomConfig} tit onClick={mapHandler} />
     </div>
   );
-};
-
-export default MapChart;
+}

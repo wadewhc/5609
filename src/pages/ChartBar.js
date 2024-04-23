@@ -54,7 +54,7 @@ function ChartBar() {
           label="Compare"
           checked={isCompareChecked}
           onChange={handleCheckboxChange}
-          style={{ marginLeft: '100px', paddingTop: '15px' }}
+          style={{ marginLeft: '250px', paddingTop: '15px' }}
         />
 
         {isCompareChecked && (

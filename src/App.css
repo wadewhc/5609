@@ -56,17 +56,34 @@
 }
 
 .chartDropdown {
-	margin-left: 250px;
-	padding-left: 200px;
+	margin-left: 200px;
+	padding-left: 170px;
 	align-items: center;
 }
 
 .chartDropdown1 {
+	margin-left: 300px;
+	/* padding-left: 200px; */
 	align-items: center;
 }
 
 .barChart {
 	/* margin-top: 20px; */
 	display: flex;
-	margin-left: 100px;
+	margin-left: 200px;
 }
+
+.mapTitle {
+	font-family: sans-serif;
+  	text-align: center;
+}
+
+path {
+	pointer-events: all;
+	opacity: 0.50;
+}
+path:hover {
+	opacity:1;
+	cursor: pointer;
+}
+  
