@@ -18,7 +18,7 @@
 }
   
 .homepage p,
-.rawdata p{
+.rawdata p {
 	border: 2px solid rgb(219, 219, 219); 
 	margin-top: 10px;
 	border-radius: 10px; 
@@ -56,14 +56,16 @@
 }
 
 .chartDropdown {
-	margin-left: 200px;
-	padding-left: 170px;
+	/* margin-left: 200px; */
+	/* padding-left: 170px; */
+	margin-left: 150px;
 	align-items: center;
 }
 
 .chartDropdown1 {
-	margin-left: 300px;
+	/* margin-left: 300px; */
 	/* padding-left: 200px; */
+	margin-left: 250px;
 	align-items: center;
 }
 
@@ -74,8 +76,22 @@
 }
 
 .mapTitle {
+	display: flex;
 	font-family: sans-serif;
   	text-align: center;
+}
+
+.mapLegend {
+	margin-top: 300px;
+	font-size: large;
+}
+
+.mapLegend p {
+	border: 2px solid rgb(219, 219, 219); 
+	margin-top: 10px;
+	border-radius: 10px; 
+	padding: 20px; 
+	font-size: 25px; 
 }
 
 path {

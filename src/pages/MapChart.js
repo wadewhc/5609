@@ -6,18 +6,38 @@ import MapData from "./MapData";
 
 // const red = "#CC0000";
 
-const USState = [
-  "AZ","NY","CT","MD","WA","OR","NV","NM","DC","DE","MA","MN","WI","IL","VT","RI","NJ","CO","CA","PA","VA","GA","ME","NH","HI","ID","MT",
-  "IN","TE","AK","KY","NC","WV","WY","ND","SD","NE","UT","TN","KS","OK","TX","IO","MO","AR","AL","MS","LA","MI","LA","FL","SC","OH","IA",
-];
+
+// 0-100
+const stateGreen = ["AK","DE","HI","ID","IA","KS","ME","MS","MT","NE","NH","ND","RI","SD","UT","VT","WV","WY"];
+
+// 100-500
+const stateYellow =["AL","AZ","AR","CO","CT","DC","FL","IN","KY","LA","MD","MA","MN","NV","NJ","NM","OK","OR","TN","WA","WI"];
+
+// 500-1000
+const stateOrange = ["GA","IL","MI","MO","NY","NC","OH","PA","SC","VA"];
+
+// 1000+
+const stateRed = ["CA","TX"];
 
 
 function makeStatsConfig() {
   const config = {};
 
-  USState.forEach((state) => {
+  stateGreen.forEach((state) => {
     config[state] = {};
-    config[state].fill = "black";
+    config[state].fill = "green";
+  });
+  stateYellow.forEach((state) => {
+    config[state] = {};
+    config[state].fill = "yellow";
+  });
+  stateOrange.forEach((state) => {
+    config[state] = {};
+    config[state].fill = "orange";
+  });
+  stateRed.forEach((state) => {
+    config[state] = {};
+    config[state].fill = "red";
   });
 
   return config;
@@ -39,8 +59,13 @@ export default function App() {
 
   return (
     <div className="mapTitle">
-      <h1>Crime Data for the Nation</h1>
-      <USAMap customize={statesCustomConfig} tit onClick={mapHandler} />
+      <div>
+        <h1>Crime Data for the Nation</h1>
+        <USAMap customize={statesCustomConfig} tit onClick={mapHandler} />
+      </div>
+      <div className="mapLegend">
+        <p>Legend</p>
+      </div>
     </div>
   );
 }

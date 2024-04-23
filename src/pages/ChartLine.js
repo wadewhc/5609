@@ -51,8 +51,8 @@ function ChartLine() {
         </div>
         <div style={{ flex: 2 }}>
             <LineChart
-                width={1000}
-                height={600}
+                width={800}
+                height={480}
                 series={[
                     { data: ChartLineData[selectedWeapon], label: `${selectedWeapon}` },
 

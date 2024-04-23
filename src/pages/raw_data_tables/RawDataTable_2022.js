@@ -43,7 +43,7 @@ const allRows = [
 function RawDataTable2022() {
   const navigate = useNavigate();
 
-  const [rowsToShow, setRowsToShow] = useState(10);
+  const [rowsToShow, setRowsToShow] = useState(5);
   const [showAll, setShowAll] = useState(false);
 
   const backToHome = () => {
@@ -52,14 +52,14 @@ function RawDataTable2022() {
 
   const handleToggleRows = () => {
     setShowAll(!showAll);
-    setRowsToShow(showAll ? 10 : allRows.length);
+    setRowsToShow(showAll ? 5 : allRows.length);
   };
   const displayRows = allRows.slice(0, rowsToShow);
 
   const totalCount = allRows.reduce((sum, row) => sum + row.count, 0);
 
   return (
-    <TableContainer  sx={{ width: "83.6vw" }} className="raw_data_table" component={Paper}>
+    <TableContainer  sx={{ width: "80.5vw" }} className="raw_data_table" component={Paper}>
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
