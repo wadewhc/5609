@@ -20,12 +20,12 @@ export const SidebarData = [
 				icon: <IoIcons.IoIosPaper />,
 			},
 			{
-				title: "Bar Chart",
+				title: "Category",
 				path: "/trend-analysis/bar-chart",
 				icon: <FaChartBar />,
 			},
 			{
-				title: "Line Chart",
+				title: "Temporal Data",
 				path: "/trend-analysis/line-chart",
 				icon: <FaChartLine />,
 			},

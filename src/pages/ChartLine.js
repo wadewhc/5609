@@ -1,69 +1,80 @@
 // import * as React from 'react';
 import React, { useState } from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
-import ChartLineData from './ChartLineData';
-import {
-    FormControl,
-    // FormLabel,
-    RadioGroup,
-    FormControlLabel,
-    Radio
-  } from '@mui/material';
+import normalizedChartLineData from './ChartLineData';
+import Form from 'react-bootstrap/Form';
   
 
 const xLabels = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'];
 
 function ChartLine() {
-    const [selectedWeapon, setSelectedWeapon] = useState('Handguns');
-    const handleRadioChange = (event) => {
-        setSelectedWeapon(event.target.value);
+    const [checkboxState, setCheckboxState] = useState({
+        "Handguns": true,
+        "Firearms, type not stated": false,
+        "Knives or cutting instruments": false,
+        "Other weapons or weapons not stated": false,
+        "Personal weapons (hands/fists/feet/etc.)": false,
+        "Blunt objects (clubs/hammers/etc.)": false,
+        "Rifles": false,
+        "Shotgun": false,
+        "Other guns": false,
+        "Narcotics": false,
+        "Asphyxiation": false,
+        "Fire": false,
+        "Strangulation": false,
+        "Poison": false,
+        "Drowning": false,
+        "Explosives": false,
+    });
+
+    const handleCheckboxChange = (event) => {
+        const { id, checked } = event.target;
+        setCheckboxState(prevState => ({
+          ...prevState,
+          [id]: checked
+        }));
     };
 
-  return (
-    
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-        <div style={{ flex: 1, marginLeft: '250px' }}>
-            <FormControl>
-                <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="Handguns"
-                    name="radio-buttons-group"
-                    onChange={handleRadioChange}
-                >
-                    <FormControlLabel value="Handguns" control={<Radio />} label="Handguns" />
-                    <FormControlLabel value="Firearms, type not stated" control={<Radio />} label="Firearms, type not stated" />
-                    <FormControlLabel value="Knives or cutting instruments" control={<Radio />} label="Knives or cutting instruments" />
-                    <FormControlLabel value="Other weapons or weapons not stated" control={<Radio />} label="Other weapons or weapons not stated" />
-                    <FormControlLabel value="Personal weapons (hands/fists/feet/etc.)" control={<Radio />} label="Personal weapons (hands/fists/feet/etc.)" />
-                    <FormControlLabel value="Rifles" control={<Radio />} label="Rifles" />
-                    <FormControlLabel value="Other guns" control={<Radio />} label="Other guns" />
-                    <FormControlLabel value="Blunt objects (clubs/hammers/etc.)" control={<Radio />} label="Blunt objects (clubs/hammers/etc.)" />
-                    <FormControlLabel value="Narcotics" control={<Radio />} label="Narcotics" />
-                    <FormControlLabel value="Shotgun" control={<Radio />} label="Shotgun" />
-                    <FormControlLabel value="Asphyxiation" control={<Radio />} label="Asphyxiation" />
-                    <FormControlLabel value="Fire" control={<Radio />} label="Fire" />
-                    <FormControlLabel value="Strangulation" control={<Radio />} label="Strangulation" />
-                    <FormControlLabel value="Poison" control={<Radio />} label="Poison" />
-                    <FormControlLabel value="Drowning" control={<Radio />} label="Drowning" />
-                    <FormControlLabel value="Explosives" control={<Radio />} label="Explosives" />
-                </RadioGroup>
-            </FormControl>
-        </div>
-        <div style={{ flex: 2 }}>
-            <LineChart
-                width={800}
-                height={480}
-                series={[
-                    { data: ChartLineData[selectedWeapon], label: `${selectedWeapon}` },
+    const series = Object.entries(checkboxState).reduce((acc, [key, value]) => {
+        if (value) {  // Only add to the series if the checkbox is checked
+            acc.push({
+                data: normalizedChartLineData[key],
+                label: key
+            });
+        }
+        return acc;
+    }, []);
 
-                ]}
-                xAxis={[{ scaleType: 'point', data: xLabels }]}
-            />
+    return (
+        
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+            <div style={{ flex: 1, marginLeft: '250px', marginTop: '50px' }}>
+                <Form>
+                    {Object.keys(checkboxState).map((weapon) => (
+                        <Form.Check 
+                        key={weapon}
+                        type="checkbox"
+                        id={weapon}
+                        label={`${weapon}`}
+                        checked={checkboxState[weapon]}
+                        onChange={handleCheckboxChange}
+                        />
+                    ))}
+                </Form>
+
+            </div>
+            <div style={{ flex: 2 }}>
+                <LineChart
+                    width={800}
+                    height={480}
+                    series={series}
+                    xAxis={[{ scaleType: 'point', data: xLabels }]}
+                />
+            </div>
+                
         </div>
-            
-    </div>
-    
-  );
+        
+    );
 }
 
 export default ChartLine;

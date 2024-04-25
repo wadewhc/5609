@@ -1,3 +1,5 @@
+
+
 const MapData = {
     "AL": {"Handguns": 174, "Firearms": 162, "Other weapons": 51},
     "AK": {"Handguns": 20, "Knives": 13, "Personal weapons": 11},
@@ -52,5 +54,7 @@ const MapData = {
     "WY": {"Handguns": 7, "Knives": 3, "Other weapons": 2},
 
 }
+
+
 
 export default MapData;

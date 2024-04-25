@@ -16,4 +16,18 @@ const ChartLineData = {
     "Drowning": [11, 3, 12, 12, 9, 8, 9, 7, 5, 0, 3],
     "Explosives": [6, 2, 6, 1, 1, 0, 4, 2, 3, 3, 1]
 }
-export default ChartLineData;
+
+function normalizeData(data) {
+    const max = Math.max(...data);
+    const min = Math.min(...data);
+    return data.map(value => (value - min) / (max - min));
+}
+
+const normalizedChartLineData = {};
+
+for (const [key, values] of Object.entries(ChartLineData)) {
+    normalizedChartLineData[key] = normalizeData(values);
+}
+
+
+export default normalizedChartLineData;

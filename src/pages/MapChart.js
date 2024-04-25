@@ -1,52 +1,32 @@
 import React from "react";
 import USAMap from "react-usa-map";
 import MapData from "./MapData";
+import { scaleLinear } from 'd3-scale';
+import Legend from './Legend';
 
-// import "./styles.css";
+const stateTotals = Object.entries(MapData).reduce((acc, [state, weapons]) => {
+  acc[state] = Object.values(weapons).reduce((sum, count) => sum + count, 0);
+  return acc;
+}, {});
 
-// const red = "#CC0000";
+const minValue = 0;
+const maxValue = 2000;
 
-
-// 0-100
-const stateGreen = ["AK","DE","HI","ID","IA","KS","ME","MS","MT","NE","NH","ND","RI","SD","UT","VT","WV","WY"];
-
-// 100-500
-const stateYellow =["AL","AZ","AR","CO","CT","DC","FL","IN","KY","LA","MD","MA","MN","NV","NJ","NM","OK","OR","TN","WA","WI"];
-
-// 500-1000
-const stateOrange = ["GA","IL","MI","MO","NY","NC","OH","PA","SC","VA"];
-
-// 1000+
-const stateRed = ["CA","TX"];
-
-
-function makeStatsConfig() {
+function makeStatesConfig(stateTotals, colorScale) {
   const config = {};
-
-  stateGreen.forEach((state) => {
-    config[state] = {};
-    config[state].fill = "green";
-  });
-  stateYellow.forEach((state) => {
-    config[state] = {};
-    config[state].fill = "yellow";
-  });
-  stateOrange.forEach((state) => {
-    config[state] = {};
-    config[state].fill = "orange";
-  });
-  stateRed.forEach((state) => {
-    config[state] = {};
-    config[state].fill = "red";
-  });
-
+  for (const [state, total] of Object.entries(stateTotals)) {
+      config[state] = { fill: colorScale(total) };
+  }
   return config;
 }
 
 export default function App() {
-  const statesCustomConfig = makeStatsConfig();
+  const colorScale = scaleLinear()
+    .domain([Math.min(...Object.values(stateTotals)), Math.max(...Object.values(stateTotals))])
+    .range(["hsl(0, 20%, 50%)", "hsl(0, 100%, 50%)"]);
 
-  console.log("data come her", statesCustomConfig);
+  const statesCustomConfig = makeStatesConfig(stateTotals, colorScale);
+
 
   const mapHandler = (event) => {
     for(let usState in MapData){
@@ -65,6 +45,7 @@ export default function App() {
       </div>
       <div className="mapLegend">
         <p>Legend</p>
+        <Legend colorScale={colorScale} min={minValue} max={maxValue} />
       </div>
     </div>
   );
