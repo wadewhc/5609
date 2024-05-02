@@ -44,6 +44,7 @@ const Simulation = () => {
     return (
         <div className="simulation">
             <h1>Situation Simulations</h1>
+            <p1>This page simulates the top three possible weapons that a offender might use given a certain age in a specific state</p1>
             <div style={{ display: "flex" }}>
                 <p>State: </p>
                 <Dropdown style={{ marginLeft: "50px" }} onSelect={handleSelectState}>

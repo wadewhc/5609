@@ -41,6 +41,7 @@ export default function App() {
     <div className="mapTitle">
       <div>
         <h1>Crime Data for the Nation</h1>
+        <p> shows the top three weapons that were used in the homicides of the selected state</p>
         <USAMap customize={statesCustomConfig} tit onClick={mapHandler} />
       </div>
       <div className="mapLegend">
